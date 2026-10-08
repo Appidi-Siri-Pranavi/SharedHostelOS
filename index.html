@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shared Hostel Resource Management</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Shared Hostel Resource Management System</h1>
+
+        <p>
+            A simple Operating Systems project demonstrating
+            resource allocation and deadlock detection.
+        </p>
+    </header>
+
+
+    <!-- STUDENT SECTION -->
+
+    <section class="container">
+
+        <h2>Student Resource Request</h2>
+
+        <label>Select Student:</label>
+
+        <select id="studentSelect">
+            <option value="Student A">Student A</option>
+            <option value="Student B">Student B</option>
+            <option value="Student C">Student C</option>
+        </select>
+
+
+        <label>Select Resource:</label>
+
+        <select id="resourceSelect">
+            <option value="Washing Machine">Washing Machine</option>
+            <option value="Dryer">Dryer</option>
+            <option value="Iron">Iron</option>
+            <option value="Study Room">Study Room</option>
+            <option value="Charging Point">Charging Point</option>
+        </select>
+
+        <br><br>
+
+<button onclick="requestResource()">
+    Request Resource
+</button>
+
+<button onclick="releaseResource()">
+    Release Resource
+</button>
+
+<button onclick="checkDeadlock()">
+    Check Deadlock
+</button>
+
+<button onclick="checkStarvation()">
+    Check Waiting / Starvation
+</button>
+
+<button onclick="createDeadlock()">
+    Create Deadlock Example
+</button>
+
+    </section>
+
+
+    <!-- RESOURCE STATUS -->
+
+    <section class="container">
+
+        <h2>Resource Status</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Resource</th>
+                    <th>Total</th>
+                    <th>Available</th>
+                    <th>Allocated To</th>
+                </tr>
+            </thead>
+
+            <tbody id="resourceTable">
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- ALLOCATIONS -->
+
+  <section class="container">
+
+    <h2>Current Allocations</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Student (Process)</th>
+                <th>Resource</th>
+                <th>Time Remaining</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="allocationTable">
+        </tbody>
+
+    </table>
+
+</section>
+<section class="container">
+
+    <h2>Admin Resource Control</h2>
+
+    <p>
+        If a student does not release a resource within the
+        allowed time, the administrator can forcefully release it.
+    </p>
+
+    <button onclick="forceReleaseSelected()">
+        Force Release Selected Resource
+    </button>
+
+    <p id="adminMessage" class="result">
+        Admin can force release resources when necessary.
+    </p>
+
+</section>
+
+
+    <!-- WAITING REQUESTS -->
+
+    <section class="container">
+
+        <h2>Waiting Requests</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Resource</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="waitingTable">
+            </tbody>
+
+        </table>
+
+    </section>
+
+
+    <!-- RESOURCE ALLOCATION GRAPH -->
+
+    <section class="container">
+
+        <h2>Resource Allocation Graph</h2>
+
+        <div id="graph" class="graph">
+        </div>
+
+        <p class="explanation">
+            Student → Resource = Request
+            <br>
+            Resource → Student = Allocation
+        </p>
+
+    </section>
+
+
+    <!-- DEADLOCK -->
+
+    <section class="container">
+
+        <h2>Deadlock Detection</h2>
+
+        <button onclick="checkDeadlock()">
+            Check Deadlock
+        </button>
+
+        <button onclick="createDeadlock()">
+            Create Deadlock Example
+        </button>
+
+        <div id="deadlockResult" class="result">
+            Click "Check Deadlock" to check the system.
+        </div>
+
+    </section>
+
+
+    <!-- OS CONCEPTS -->
+
+    <section class="container">
+
+        <h2>OS Concepts Used</h2>
+
+        <ul>
+
+            <li>
+                <b>Process:</b>
+                Students are treated as processes.
+            </li>
+
+            <li>
+                <b>Resource:</b>
+                Hostel facilities are treated as resources.
+            </li>
+
+            <li>
+                <b>Mutex:</b>
+                Only one student can use a single-instance resource.
+            </li>
+
+            <li>
+                <b>Semaphore:</b>
+                Keeps track of available resource instances.
+            </li>
+
+            <li>
+                <b>Waiting Queue:</b>
+                Students wait when a resource is unavailable.
+            </li>
+
+            <li>
+                <b>Deadlock:</b>
+                Occurs when processes wait for resources held by each other.
+            </li>
+
+            <li>
+                <b>Resource Allocation Graph:</b>
+                Shows resource requests and allocations.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <footer>
+        <p>
+            Shared Hostel Resource Management System |
+            Operating Systems Mini Project
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
